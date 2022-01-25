@@ -1,0 +1,20 @@
+* {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+:root {
+  --main-color: #F00;
+}
+
+body {
+  height: 4000px;
+}
+
+.navbar .navbar-brand {
+  color: var(--main-color);
+}
+
+.navbar .navbar-nav {
+  flex-basis: 100%;
+  justify-content: flex-end;
+}
