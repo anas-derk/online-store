@@ -1,22 +1,4 @@
 .products-gallery {
-    padding: {
-        top: 50px;
-        bottom: 50px
-    }
-    h1{
-        color: var(--main-color);
-        margin-bottom: 60px;
-        position: relative;
-        &::after{
-            content: '';
-            position: absolute;
-            left: calc(50% - 50px);
-            bottom: -20px;
-            width: 100px;
-            height: 3px;
-            background-color: var(--main-color);
-        }
-    }
     .products-filter-form{
         margin-bottom: 30px;
         .products-filter-button{

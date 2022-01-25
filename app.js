@@ -24,6 +24,10 @@ const homeRouter = require("./routes/home.route")
 
 app.use('/', homeRouter)
 
+const productInfoRouter = require("./routes/productInfo.route")
+
+app.use("/product-info", productInfoRouter)
+
 app.use( (req, res) => {
 
     res.status(404).render("pageNotFound/index")

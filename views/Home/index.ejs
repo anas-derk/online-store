@@ -4,7 +4,7 @@
         <%- include("../components/public.meta.tags.ejs") %>
         <title>Home Page</title>
         <%- include("../components/public.style.tags.ejs") %> 
-        <link rel="stylesheet" href="css/Home/style.min.css">
+        <link rel="stylesheet" href="/css/Home/style.min.css">
     </head>
     <body>
         <!-- Start Header -->
@@ -51,7 +51,10 @@
                                 <!-- End Product Image Box -->
                                 <!-- Start Product Caption Box -->
                                 <div class="card-body product-caption-box">
-                                    <a class="card-title product-name" href="/product/<%= productInfo._id %> ">
+                                    <a  class="card-title product-name"
+                                        href="/product-info/<%= productInfo._id %>"
+                                        target="_blank"
+                                    >
                                         <%= productInfo.name %>
                                     </a>
                                     <h4 class="product-price">
