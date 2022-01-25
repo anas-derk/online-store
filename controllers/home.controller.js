@@ -2,11 +2,25 @@ const productModel = require("../models/product.model")
 
 function getHomePage(req, res) {
 
-    productModel.get_all_products_info().then(productsInfo => {
+    let category = req.query.category
 
-        res.render("Home/index", {productsInfo})
+    if (category === "all" || category === "") {
 
-    })
+        productModel.get_all_products_info().then(productsInfo => {
+
+            res.render("Home/index", { productsInfo })
+
+        })
+
+    } else {
+
+        productModel.get_products_by_category(category).then(productsInfo => {
+
+            res.render("Home/index", { productsInfo })
+
+        })
+
+    }
 
 }
 

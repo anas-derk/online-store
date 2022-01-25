@@ -17,6 +17,14 @@
             background-color: var(--main-color);
         }
     }
+    .products-filter-form{
+        margin-bottom: 30px;
+        .products-filter-button{
+            margin: {
+                top: 20px
+            }
+        }
+    }
     .product-info-box{
         margin-bottom: 30px;
         &.card{

@@ -19,6 +19,14 @@
   background-color: var(--main-color);
 }
 
+.products-gallery .products-filter-form {
+  margin-bottom: 30px;
+}
+
+.products-gallery .products-filter-form .products-filter-button {
+  margin-top: 20px;
+}
+
 .products-gallery .product-info-box {
   margin-bottom: 30px;
 }

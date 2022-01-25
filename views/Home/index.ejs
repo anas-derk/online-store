@@ -15,6 +15,17 @@
             <h1 class="text-center fw-bold">Products Gallery</h1>
             <!-- Start Container -->
             <div class="container">
+                <!-- Start Products Filter Form -->
+                <form action="/" class="products-filter-form text-center" method="get">
+                    <select name="category" class="form-select">
+                        <option value="all">All</option>
+                        <option value="phones">Phones</option>
+                        <option value="clothes">Clothes</option>
+                        <option value="computers">Computers</option>
+                    </select>
+                    <button type="submit" class="btn btn-danger products-filter-button">Products Filter</button>
+                </form>
+                <!-- End Products Filter Form -->
                 <!-- Start Grid System -->
                 <div class="row">
                     <% for( let productInfo of productsInfo ) { %>

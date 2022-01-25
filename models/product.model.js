@@ -37,4 +37,26 @@ function get_all_products_info(){
 
 }
 
-module.exports = {get_all_products_info}
+function get_products_by_category(category){
+
+    return new Promise( (resolve, reject) => {
+
+        mongoose.connect(DB_URL).then( () => {
+
+            return productModel.find({category: category})
+
+        } ).then(productsInfo => {
+
+            resolve(productsInfo)
+
+        }).catch(err => {
+
+            reject(err)
+
+        })
+        
+    } )
+
+}
+
+module.exports = {get_all_products_info, get_products_by_category}
