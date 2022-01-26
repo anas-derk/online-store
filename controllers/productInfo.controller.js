@@ -2,7 +2,9 @@ const productModel = require("../models/product.model")
 
 function getProductInfo(req, res){
 
-    let productId = req.params.id
+    let productId = +req.params.id
+
+    console.log(productId)
 
     productModel.get_product_info_by_id(productId).then(productInfo => {
 

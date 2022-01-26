@@ -15,12 +15,55 @@
                 <!-- Start Grid System -->
                 <div class="row">
                     <!-- Start Column -->
-                    <!-- Start Column -->
                     <div class="col-md-6">
-                        aa
+                        <!-- Start Product Info Box -->
+                        <div class="card product-info-box">
+                            <!-- Start Product Caption Box -->
+                            <div class="card-body product-caption-box">
+                                <p class="card-title product-name">
+                                    <%= productInfo.name %>
+                                </p>
+                                <h4 class="product-price">
+                                    <%= productInfo.price %>
+                                </h4>
+                                <h3 class="product-category">
+                                    <%= productInfo.category %> 
+                                </h3>
+                                <p class="card-text product-description">
+                                    <%= productInfo.description %>
+                                </p>
+                                <form action="/cart" method="get" class="add-to-cart-form">
+                                    <input type="number" name="amount" class="form-control">
+                                    <button type="submit" class="btn btn-primary add-to-cart">
+                                        Add to cart
+                                    </button>
+                                </form>
+                            </div>
+                            <!-- End Product Caption Box -->
+                        </div>
+                        <!-- End Product Info Box -->
                     </div>
                     <!-- End Column -->
-                    
+                    <!-- Start Column -->
+                    <div class="col-md-6">
+                        <!-- Start Product Image Box -->
+                        <div class="product-image-box">
+                            <!-- Start Product Image -->
+                            <img
+                                src="/<%= productInfo.productImageSrc %>"
+                                class="card-img-top"
+                                alt="Sorry !!"
+                            >
+                            <!-- End Product Image -->
+                            <!-- Start Overlay -->
+                            <div class="overlay">
+                                <button>Show Image</button>
+                            </div>
+                            <!-- End Overlay -->
+                        </div>
+                        <!-- End Product Image Box -->
+                    </div>
+                    <!-- End Column -->
                 </div>  
                 <!-- End Grid System -->
             </div>

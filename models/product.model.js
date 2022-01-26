@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const productSchema = mongoose.Schema(
     {
-        _id: Object,
+        id: Number,
         productImageSrc: String,
         name: String,
         price: Number,
@@ -65,7 +65,7 @@ function get_product_info_by_id(id){
 
         mongoose.connect(DB_URL).then( () => {
 
-            return productModel.findById(id)
+            return productModel.findOne({id: id})
 
         } ).then(productInfo => {
 

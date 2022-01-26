@@ -9,6 +9,11 @@
     }
     .product-info-box{
         margin-bottom: 30px;
+        transition: .3s;
+        &:hover{
+            box-shadow: 1px 1px 7px #F00, -1px -1px 7px #00F;
+            transform: translate(10px, 10px)
+        }
         &.card{
             border-radius: 7px;
             overflow: hidden
@@ -30,23 +35,25 @@
                 align-items: center;
                 transition: .3s;
                 &:hover{
-                    background-color: rgba(0,0,0,.6);
-                    cursor: pointer
+                    background-color: rgba(0,0,0,.6)
                 }
             }
         }
-        .product-caption-box{
-            .product-name{
-
-            }
-            .product-price{
-
-            }
-            .product-category{
-
-            }
-            .product-description{
-
+        .product-details-list{
+            list-style: {
+                type: square;
+                position: inside
+            };
+            li{
+                margin-bottom: 10px;
+                span{
+                    color: var(--main-color)
+                }
+                &:first-child{
+                    a{
+                        text-decoration: none
+                    }
+                }
             }
             .add-to-cart-form{
                 .add-to-cart{
