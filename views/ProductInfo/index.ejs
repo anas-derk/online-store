@@ -18,28 +18,30 @@
                     <div class="col-md-6">
                         <!-- Start Product Info Box -->
                         <div class="card product-info-box">
-                            <!-- Start Product Caption Box -->
-                            <div class="card-body product-caption-box">
-                                <p class="card-title product-name">
-                                    <%= productInfo.name %>
-                                </p>
-                                <h4 class="product-price">
-                                    <%= productInfo.price %>
-                                </h4>
-                                <h3 class="product-category">
-                                    <%= productInfo.category %> 
-                                </h3>
-                                <p class="card-text product-description">
-                                    <%= productInfo.description %>
-                                </p>
+                            <!-- Start Product Details List -->
+                            <ul class="card-body product-details-list">
+                                <li class="card-title product-name">
+                                    Product Name: <span class="fw-bold"><%= productInfo.name %></span>
+                                </li>
+                                <li class="product-price">
+                                    Product Price: <span class="fw-bold"><%= productInfo.price %></span>$
+                                </li>
+                                <li class="product-category">
+                                    Product Category: <span class="fw-bold"><%= productInfo.category %></span> 
+                                </li>
+                                <li class="card-text product-description">
+                                    Product Description: <span class="fw-bold"><%= productInfo.description %></span>
+                                </li>
+                                <!-- Start Add To Cart Form -->
                                 <form action="/cart" method="get" class="add-to-cart-form">
                                     <input type="number" name="amount" class="form-control">
                                     <button type="submit" class="btn btn-primary add-to-cart">
                                         Add to cart
                                     </button>
                                 </form>
-                            </div>
-                            <!-- End Product Caption Box -->
+                                <!-- End Add To Cart Form -->
+                            </ul>
+                            <!-- End Product Details List -->
                         </div>
                         <!-- End Product Info Box -->
                     </div>
@@ -56,9 +58,7 @@
                             >
                             <!-- End Product Image -->
                             <!-- Start Overlay -->
-                            <div class="overlay">
-                                <button>Show Image</button>
-                            </div>
+                            <div class="overlay"></div>
                             <!-- End Overlay -->
                         </div>
                         <!-- End Product Image Box -->

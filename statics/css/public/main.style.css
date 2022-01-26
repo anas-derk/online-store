@@ -39,3 +39,66 @@ section h1::after {
   flex-basis: 100%;
   justify-content: flex-end;
 }
+
+.product-info-box {
+  margin-bottom: 30px;
+  transition: .3s;
+}
+
+.product-info-box:hover {
+  box-shadow: 1px 1px 7px #F00, -1px -1px 7px #00F;
+  transform: translate(10px, 10px);
+}
+
+.product-info-box.card {
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.product-info-box .product-details-list {
+  list-style-type: square;
+  list-style-position: inside;
+}
+
+.product-info-box .product-details-list li {
+  margin-bottom: 25px;
+}
+
+.product-info-box .product-details-list li span {
+  color: var(--main-color);
+}
+
+.product-info-box .product-details-list li:first-child a {
+  text-decoration: none;
+}
+
+.product-info-box .product-details-list .add-to-cart-form .add-to-cart {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.product-image-box {
+  position: relative;
+}
+
+.product-image-box img {
+  height: 320px;
+  border-top-right-radius: 25px;
+}
+
+.product-image-box .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  transition: .3s;
+}
+
+.product-image-box .overlay:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
