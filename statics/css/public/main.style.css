@@ -31,6 +31,10 @@ section h1::after {
   background-color: var(--main-color);
 }
 
+a {
+  text-decoration: none;
+}
+
 .navbar .navbar-brand {
   color: var(--main-color);
 }
@@ -66,10 +70,6 @@ section h1::after {
 
 .product-info-box .product-details-list li span {
   color: var(--main-color);
-}
-
-.product-info-box .product-details-list li:first-child a {
-  text-decoration: none;
 }
 
 .product-info-box .product-details-list .add-to-cart-form .add-to-cart {

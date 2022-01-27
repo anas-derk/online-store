@@ -20,13 +20,15 @@ app.use( express.static( path.join(__dirname, "statics") ) )
 
 // routes handling
 
-const homeRouter = require("./routes/home.route")
+const   homeRouter = require("./routes/home.route"),
+        productInfoRouter = require("./routes/productInfo.route"),
+        authRouter = require("./routes/auth.route")
 
 app.use('/', homeRouter)
 
-const productInfoRouter = require("./routes/productInfo.route")
-
 app.use("/product-info", productInfoRouter)
+
+app.use('/', authRouter)
 
 app.use( (req, res) => {
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../components/public.meta.tags.ejs") %> 
+        <title>Create Account Page</title>
+        <%- include("../components/public.style.tags.ejs") %>
+        <link rel="stylesheet" href="/css/Signup/style.min.css">
+    </head>
+    <body>
+        <!-- Start Header -->
+        <%- include("../components/header.ejs") %> 
+        <!-- End Header -->
+        <!-- Start Signup -->
+        <section class="signup">
+            <h1 class="text-center fw-bold">Create Account</h1>
+            <!-- Start Container -->
+            <div class="container text-center">
+                <!-- Start Signup Form -->
+                <form action="/signup" method="post" class="signup-form">
+                    <input type="text" name="username" placeholder="User Name" class="form-control">
+                    <input type="email" name="email" placeholder="Email" class="form-control">
+                    <input type="password" name="password" placeholder="Password" class="form-control">
+                    <input type="password" name="password" placeholder="Confirm Password" class="form-control">
+                    <button type="submit" class="btn btn-primary create-account-btn">Create Account</button>
+                </form>
+                <!-- End Signup Form -->
+                <h6>Already have account ?
+                    <a href="/login">Login</a>
+                </h6>
+            </div>
+            <!-- End Container -->
+        </section>
+        <!-- End Signup -->
+        <%- include("../components/public.script.tags.ejs") %> 
+    </body>
+</html>

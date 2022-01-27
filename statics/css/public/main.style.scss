@@ -31,6 +31,10 @@ section{
     }
 }
 
+a{
+    text-decoration: none
+}
+
 .navbar {
     .navbar-brand{
         color: var(--main-color)
@@ -61,11 +65,6 @@ section{
             margin-bottom: 25px;
             span{
                 color: var(--main-color)
-            }
-            &:first-child{
-                a{
-                    text-decoration: none
-                }
             }
         }
         .add-to-cart-form{
