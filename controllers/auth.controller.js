@@ -4,4 +4,10 @@ function getSignupPage(req, res){
 
 }
 
-module.exports = {getSignupPage}
+function getLoginPage(req, res){
+
+    res.render("Login/index")
+
+}
+
+module.exports = {getSignupPage, getLoginPage}

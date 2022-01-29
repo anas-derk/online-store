@@ -25,9 +25,13 @@ function get_all_products_info(){
 
         } ).then( productsInfo => {
 
+            mongoose.disconnect()
+
             resolve(productsInfo)
 
         } ).catch(err => {
+
+            mongoose.disconnect()
 
             reject(err)
 
@@ -47,9 +51,13 @@ function get_products_by_category(category){
 
         } ).then(productsInfo => {
 
+            mongoose.disconnect()
+
             resolve(productsInfo)
 
         }).catch(err => {
+
+            mongoose.disconnect()
 
             reject(err)
 
@@ -69,9 +77,13 @@ function get_product_info_by_id(id){
 
         } ).then(productInfo => {
 
+            mongoose.disconnect()
+
             resolve(productInfo)
 
         }).catch(err => {
+
+            mongoose.disconnect()
 
             reject(err)
 
