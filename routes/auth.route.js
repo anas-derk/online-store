@@ -10,4 +10,6 @@ authRouter.post("/signup", bodyParser.urlencoded({extended: true}), authControll
 
 authRouter.get("/login", authController.getLoginPage )
 
+authRouter.all("/login", bodyParser.urlencoded({extended: true}), authController.allLogin)
+
 module.exports = authRouter

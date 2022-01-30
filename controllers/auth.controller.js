@@ -28,4 +28,18 @@ function postSignup(req, res){
 
 }
 
-module.exports = {getSignupPage, getLoginPage, postSignup}
+function allLogin(req, res){
+
+    authModel.login(req.body.email, req.body.password).then(() => {
+
+        res.redirect("/")
+
+    }).catch(err => {
+
+        res.redirect("/login")
+
+    })
+
+}
+
+module.exports = {getSignupPage, getLoginPage, postSignup, allLogin}

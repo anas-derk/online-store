@@ -64,4 +64,48 @@ function createUserAccount(userName, email, password){
 
 }
 
-module.exports = {createUserAccount}
+function login(email, password){
+
+    return new Promise( (resolve, reject) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            return userModel.find({email: email})
+
+        }).then(user => {
+
+            if(user.length === 0){
+
+                mongoose.disconnect()
+
+                reject("There is no email matches This Email !!")
+
+            } else {
+
+                return bcrypt.compare(password, user[0].password)
+
+            }
+
+        }).then(passwordIsTrue => {
+
+            if(passwordIsTrue) {
+
+                mongoose.disconnect()
+
+                resolve()
+                
+            } else {
+                
+                mongoose.disconnect()
+
+                reject("Password is not true !!")
+
+            }
+
+        })
+
+    } )
+
+}
+
+module.exports = {createUserAccount, login}
