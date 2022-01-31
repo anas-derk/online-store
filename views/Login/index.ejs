@@ -22,6 +22,11 @@
                     <button type="submit" class="btn btn-primary create-account-btn">Login</button>
                 </form>
                 <!-- End Login Form -->
+                <% if (loginError) { %>
+                    <p class="alert alert-danger">
+                        <%= loginError %>
+                    </p>
+                <% } %>
             </div>
             <!-- End Container -->
         </section>

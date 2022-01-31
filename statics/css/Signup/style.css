@@ -1,5 +1,13 @@
+.signup .signup-form {
+  margin-bottom: 20px;
+}
+
 .signup .signup-form input {
   margin-bottom: 20px;
+}
+
+.signup p {
+  margin-bottom: 0;
 }
 
 .signup h6 {

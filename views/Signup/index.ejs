@@ -24,6 +24,11 @@
                     <button type="submit" class="btn btn-primary create-account-btn">Create Account</button>
                 </form>
                 <!-- End Signup Form -->
+                <% if (signupError) { %>
+                    <p class="alert alert-danger">
+                        <%= signupError %> 
+                    </p>
+                <% } %>
                 <h6>Already have account ?
                     <a href="/login">Login</a>
                 </h6>

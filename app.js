@@ -1,6 +1,9 @@
-// require express module
+// require external modules
 
-const express = require("express")
+const express   = require("express"),
+        path    = require("path"),
+        session = require("express-session"),
+        flash = require("connect-flash")
 
 // creating express app
 
@@ -14,9 +17,21 @@ app.set("views", "views") // default
 
 // direct the browser to statics files path
 
-const path = require("path")
-
 app.use( express.static( path.join(__dirname, "statics") ) )
+
+// use express session module
+
+app.use(session({
+        cookie: { maxAge: 60000 },
+        secret: 'woot',
+        resave: false, 
+        saveUninitialized: false
+    })
+)
+
+// use flash module globally for share data in flash session
+
+app.use(flash())
 
 // routes handling
 

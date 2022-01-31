@@ -2,13 +2,21 @@ const authModel = require("../models/auth.model")
 
 function getSignupPage(req, res){
 
-    res.render("Signup/index")
+    res.render("Signup/index", {
+
+        signupError: req.flash('signupError')[0]
+
+    })
 
 }
 
 function getLoginPage(req, res){
 
-    res.render("Login/index")
+    res.render("Login/index", {
+
+        loginError: req.flash('loginError')[0]
+
+    })
 
 }
 
@@ -20,7 +28,7 @@ function postSignup(req, res){
 
     }).catch(err => {
 
-        console.log(err)
+        req.flash('signupError', err)
 
         res.redirect("/signup")
 
@@ -28,7 +36,7 @@ function postSignup(req, res){
 
 }
 
-function allLogin(req, res){
+function postLogin(req, res){
 
     authModel.login(req.body.email, req.body.password).then(() => {
 
@@ -36,10 +44,12 @@ function allLogin(req, res){
 
     }).catch(err => {
 
+        req.flash('loginError', err)
+
         res.redirect("/login")
 
     })
 
 }
 
-module.exports = {getSignupPage, getLoginPage, postSignup, allLogin}
+module.exports = {getSignupPage, getLoginPage, postSignup, postLogin}
