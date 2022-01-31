@@ -8,6 +8,11 @@
 
 .signup p {
   margin-bottom: 0;
+  display: none;
+}
+
+.signup p.displayed {
+  display: block;
 }
 
 .signup h6 {

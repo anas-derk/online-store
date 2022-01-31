@@ -17,13 +17,36 @@
             <div class="container text-center">
                 <!-- Start Signup Form -->
                 <form action="/signup" method="post" class="signup-form">
-                    <input type="text" name="username" placeholder="User Name" class="form-control" required>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="User Name"
+                        class="form-control"
+                        required
+                    >
                     <input type="email" name="email" placeholder="Email" class="form-control" required>
-                    <input type="password" name="password" placeholder="Password" class="form-control" required>
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password" class="form-control" required>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        class="form-control password"
+                        required
+                        pattern=".{8,}"
+                        title="Password Must contain at least Eight Number"
+                    >
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        class="form-control confirm-password"
+                        required
+                        pattern=".{8,}"
+                        title="Password Must contain at least Eight Number"
+                    >
                     <button type="submit" class="btn btn-primary create-account-btn">Create Account</button>
                 </form>
                 <!-- End Signup Form -->
+                <p class="alert alert-danger">There is no Matches Between Password And Confirm Password !!</p>
                 <% if (signupError) { %>
                     <p class="alert alert-danger">
                         <%= signupError %> 
@@ -37,5 +60,6 @@
         </section>
         <!-- End Signup -->
         <%- include("../components/public.script.tags.ejs") %> 
+        <script src="/js/Signup/main.js"></script>
     </body>
 </html>

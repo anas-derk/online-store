@@ -1,1 +1,1 @@
-.signup .signup-form{margin-bottom:20px}.signup .signup-form input{margin-bottom:20px}.signup p{margin-bottom:0}.signup h6{margin-top:30px}
+.signup .signup-form{margin-bottom:20px}.signup .signup-form input{margin-bottom:20px}.signup p{margin-bottom:0;display:none}.signup p.displayed{display:block}.signup h6{margin-top:30px}
