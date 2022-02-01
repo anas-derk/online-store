@@ -8,7 +8,10 @@ function getHomePage(req, res) {
 
         productModel.get_all_products_info().then(productsInfo => {
 
-            res.render("Home/index", { productsInfo })
+            res.render("Home/index", {
+                productsInfo,
+                isUser: req.session.userId
+            })
 
         })
 
@@ -16,7 +19,10 @@ function getHomePage(req, res) {
 
         productModel.get_products_by_category(category).then(productsInfo => {
 
-            res.render("Home/index", { productsInfo })
+            res.render("Home/index", {
+                productsInfo,
+                isUser: req.session.userId
+            })
 
         })
 

@@ -9,15 +9,20 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link" href="/cart">Cart</a>
-                    <a class="nav-link" href="/orders">Orders</a>
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/signup">Signup</a>
+                    <% if (isUser) { %>
+                        <a class="nav-link" href="/cart">Cart</a>
+                        <a class="nav-link" href="/orders">Orders</a>
+                    <% } else { %>
+                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" href="/signup">Signup</a>
+                    <% } %>
                     <a class="nav-link" href="/admin/add-product">Add Product</a>
                     <a class="nav-link" href="/admin/manage-orders">Manage Orders</a>
-                    <form action="/logout" method="get">
-                        <button type="submit" class="btn btn-danger">Logout</button>
-                    </form>
+                    <% if (isUser) { %>
+                        <form action="/logout" method="get">
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+                    <% } %>
                 </div>
             </div>
         </div>

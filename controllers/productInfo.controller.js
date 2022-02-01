@@ -4,11 +4,12 @@ function getProductInfo(req, res){
 
     let productId = +req.params.id
 
-    console.log(productId)
-
     productModel.get_product_info_by_id(productId).then(productInfo => {
 
-        res.render("ProductInfo/index", {productInfo} )
+        res.render("ProductInfo/index", {
+            productInfo,
+            isUser: req.session.userId
+        })
 
     } )
 

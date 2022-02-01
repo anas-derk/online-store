@@ -4,7 +4,8 @@ function getSignupPage(req, res){
 
     res.render("Signup/index", {
 
-        signupError: req.flash('signupError')[0]
+        signupError: req.flash('signupError')[0],
+        isUser: req.session.userId
 
     })
 
@@ -14,7 +15,8 @@ function getLoginPage(req, res){
 
     res.render("Login/index", {
 
-        loginError: req.flash('loginError')[0]
+        loginError: req.flash('loginError')[0],
+        isUser: req.session.userId
 
     })
 
