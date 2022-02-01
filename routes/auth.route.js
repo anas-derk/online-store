@@ -12,4 +12,6 @@ authRouter.get("/login", authController.getLoginPage )
 
 authRouter.post("/login", bodyParser.urlencoded({extended: true}), authController.postLogin)
 
+authRouter.get("/logout", authController.getLogout)
+
 module.exports = authRouter

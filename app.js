@@ -5,6 +5,8 @@ const express   = require("express"),
         session = require("express-session"),
         flash = require("connect-flash")
 
+const MongoDBStore = require("connect-mongodb-session")(session)
+
 // creating express app
 
 const app = express()
@@ -21,11 +23,16 @@ app.use( express.static( path.join(__dirname, "statics") ) )
 
 // use express session module
 
+const store = new MongoDBStore({
+    uri: "mongodb://localhost:27017/online-shop",
+    collection: "sessions"
+})
+
 app.use(session({
-        cookie: { maxAge: 60000 },
         secret: 'woot',
-        resave: false, 
-        saveUninitialized: false
+        saveUninitialized: false,
+        resave: false,
+        store: store
     })
 )
 

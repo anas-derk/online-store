@@ -38,7 +38,9 @@ function postSignup(req, res){
 
 function postLogin(req, res){
 
-    authModel.login(req.body.email, req.body.password).then(() => {
+    authModel.login(req.body.email, req.body.password).then(userId => {
+
+        req.session.userId = userId
 
         res.redirect("/")
 
@@ -52,4 +54,14 @@ function postLogin(req, res){
 
 }
 
-module.exports = {getSignupPage, getLoginPage, postSignup, postLogin}
+function getLogout(req, res) {
+
+    req.session.destroy(() => {
+
+        res.redirect('/')
+
+    })
+
+}
+
+module.exports = {getSignupPage, getLoginPage, postSignup, postLogin, getLogout}

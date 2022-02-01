@@ -82,23 +82,23 @@ function login(email, password){
 
             } else {
 
-                return bcrypt.compare(password, user[0].password)
+                bcrypt.compare(password, user[0].password).then(passwordIsTrue => {
 
-            }
-
-        }).then(passwordIsTrue => {
-
-            if(passwordIsTrue) {
-
-                mongoose.disconnect()
-
-                resolve()
-                
-            } else {
-                
-                mongoose.disconnect()
-
-                reject("Password is not true !!")
+                    if(passwordIsTrue) {
+        
+                        mongoose.disconnect()
+        
+                        resolve(user[0]._id)
+                        
+                    } else {
+                        
+                        mongoose.disconnect()
+        
+                        reject("Password is not true !!")
+        
+                    }
+        
+                })
 
             }
 

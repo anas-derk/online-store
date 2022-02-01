@@ -5,3 +5,7 @@
 .login .login-form input {
   margin-bottom: 20px;
 }
+
+.login .login-form h6 {
+  margin-top: 30px;
+}
