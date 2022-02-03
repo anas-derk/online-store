@@ -44,13 +44,16 @@ app.use(flash())
 
 const   homeRouter = require("./routes/home.route"),
         productInfoRouter = require("./routes/productInfo.route"),
-        authRouter = require("./routes/auth.route")
+        authRouter = require("./routes/auth.route"),
+        cartRouter = require("./routes/cart.route")
 
 app.use('/', homeRouter)
 
 app.use("/product-info", productInfoRouter)
 
 app.use('/', authRouter)
+
+app.use('/', cartRouter)
 
 app.use( (req, res) => {
 

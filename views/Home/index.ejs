@@ -68,8 +68,11 @@
                                         Product Description: <span class="fw-bold"><%= productInfo.description %></span>
                                     </li>
                                     <!-- Start Add To Cart Form -->
-                                    <form action="/cart" method="get" class="add-to-cart-form">
-                                        <input type="number" name="amount" class="form-control">
+                                    <form action="/cart" method="post" class="add-to-cart-form">
+                                        <input type="number" name="amount" class="form-control" required min="1" max="6">
+                                        <input type="hidden" name="name" value="<%= productInfo.name %> ">
+                                        <input type="hidden" name="price" value="<%= productInfo.price %> ">
+                                        <input type="hidden" name="productId" value="<%= productInfo.id %> ">
                                         <button type="submit" class="btn btn-primary add-to-cart">
                                             Add to cart
                                         </button>
