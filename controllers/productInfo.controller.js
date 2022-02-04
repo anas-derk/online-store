@@ -16,4 +16,26 @@ function getProductInfo(req, res){
 
 }
 
-module.exports = {getProductInfo}
+function postAddProduct(req, res) {
+
+    productModel.addProduct({
+
+        productImageSrc: "images/products/" + req.file.originalname,
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        category: req.body.category
+
+    }).then(() => {
+
+        res.redirect('/')
+
+    }).catch(err => {
+
+        console.log(err)
+
+    })
+
+}
+
+module.exports = {getProductInfo, postAddProduct}

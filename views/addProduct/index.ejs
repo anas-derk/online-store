@@ -15,7 +15,7 @@
             <h1 class="text-center fw-bold">Add Product</h1>
             <!-- Start Container -->
             <div class="container text-center">
-                <form action="/admin/add-product" method="post" class="add-product-form">
+                <form action="/admin/add-product" method="post" class="add-product-form" enctype="multipart/form-data">
                     <input type="text" name="name" placeholder="Name" class="form-control" required>
                     <input type="number" name="price" placeholder="Price" class="form-control" required>
                     <textarea name="description" placeholder="Description" class="form-control" required></textarea>

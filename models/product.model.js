@@ -93,4 +93,28 @@ function get_product_info_by_id(id){
 
 }
 
-module.exports = {get_all_products_info, get_products_by_category, get_product_info_by_id}
+function addProduct(productInfo) {
+
+    return new Promise( (resolve, reject) => {
+    
+        mongoose.connect(DB_URL).then(() => {
+
+            let newProduct = new productModel(productInfo)
+
+            return newProduct.save()
+        
+        }).then(() => {
+
+            resolve()
+
+        }).catch(err => {
+
+            reject(err)
+        
+        })
+
+    } )
+
+}
+
+module.exports = {get_all_products_info, get_products_by_category, get_product_info_by_id, addProduct}
