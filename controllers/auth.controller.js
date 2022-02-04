@@ -5,7 +5,8 @@ function getSignupPage(req, res){
     res.render("Signup/index", {
 
         signupError: req.flash('signupError')[0],
-        isUser: req.session.userId
+        isUser: req.session.userId,
+        isAdmin: false
 
     })
 
@@ -16,7 +17,8 @@ function getLoginPage(req, res){
     res.render("Login/index", {
 
         loginError: req.flash('loginError')[0],
-        isUser: req.session.userId
+        isUser: req.session.userId,
+        isAdmin: false
 
     })
 
@@ -40,9 +42,11 @@ function postSignup(req, res){
 
 function postLogin(req, res){
 
-    authModel.login(req.body.email, req.body.password).then(userId => {
+    authModel.login(req.body.email, req.body.password).then(result => {
 
-        req.session.userId = userId
+        req.session.userId = result.userId
+
+        req.session.isAdmin = result.isAdmin
 
         res.redirect("/")
 

@@ -10,7 +10,8 @@ function getHomePage(req, res) {
 
             res.render("Home/index", {
                 productsInfo,
-                isUser: req.session.userId
+                isUser: req.session.userId,
+                isAdmin: req.session.isAdmin
             })
 
         })
@@ -21,7 +22,8 @@ function getHomePage(req, res) {
 
             res.render("Home/index", {
                 productsInfo,
-                isUser: req.session.userId
+                isUser: req.session.userId,
+                isAdmin: req.session.isAdmin
             })
 
         })

@@ -8,7 +8,8 @@ function getProductInfo(req, res){
 
         res.render("ProductInfo/index", {
             productInfo,
-            isUser: req.session.userId
+            isUser: req.session.userId,
+            isAdmin: req.session.isAdmin
         })
 
     } )

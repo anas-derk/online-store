@@ -3,7 +3,11 @@ const mongoose = require("mongoose")
 const userSchema = mongoose.Schema({
     username: String,
     email: String,
-    password: String
+    password: String,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const userModel = mongoose.model("user", userSchema)
@@ -88,7 +92,10 @@ function login(email, password){
         
                         mongoose.disconnect()
         
-                        resolve(user[0]._id)
+                        resolve({
+                            userId: user[0]._id,
+                            isAdmin: user[0].isAdmin
+                        })
                         
                     } else {
                         

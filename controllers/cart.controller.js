@@ -8,7 +8,9 @@ function getCartPage(req, res) {
 
             isUser: true,
 
-            carts: carts
+            carts: carts,
+
+            isAdmin: req.session.isAdmin
 
         })
 

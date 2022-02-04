@@ -16,8 +16,10 @@
                         <a class="nav-link" href="/login">Login</a>
                         <a class="nav-link" href="/signup">Signup</a>
                     <% } %>
-                    <a class="nav-link" href="/admin/add-product">Add Product</a>
-                    <a class="nav-link" href="/admin/manage-orders">Manage Orders</a>
+                    <% if (isAdmin) { %>
+                        <a class="nav-link" href="/admin/add-product">Add Product</a>
+                        <a class="nav-link" href="/admin/manage-orders">Manage Orders</a>
+                    <% } %>
                     <% if (isUser) { %>
                         <form action="/logout" method="get">
                             <button type="submit" class="btn btn-danger">Logout</button>
