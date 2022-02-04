@@ -15,7 +15,21 @@
             <h1 class="text-center fw-bold">Add Product</h1>
             <!-- Start Container -->
             <div class="container text-center">
-                
+                <form action="/admin/add-product" method="post" class="add-product-form">
+                    <input type="text" name="name" placeholder="Name" class="form-control" required>
+                    <input type="number" name="price" placeholder="Price" class="form-control" required>
+                    <textarea name="description" placeholder="Description" class="form-control" required></textarea>
+                    <select name="category" class="form-select" required>
+                        <option value="" hidden>Choose Category</option>
+                        <option value="all">All</option>
+                        <option value="phones">Phones</option>
+                        <option value="clothes">Clothes</option>
+                        <option value="computers">Computers</option>
+                    </select>
+                    <input type="file" name="file" class="form-control" required>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                </form>
             </div>
             <!-- End Container -->
         </section>

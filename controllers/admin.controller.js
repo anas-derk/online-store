@@ -2,7 +2,7 @@ function getAddProductPage(req, res) {
 
     res.render("AddProduct/index", {
 
-        isUser: req.session.isUser,
+        isUser: req.session.userId,
 
         isAdmin: true
 

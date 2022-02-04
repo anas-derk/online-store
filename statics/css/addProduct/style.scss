@@ -1,0 +1,11 @@
+.add-product{
+    .add-product-form{
+        input, textarea, select{
+            margin-bottom: 20px
+        }
+        textarea{
+            resize: none;
+            height: 150px;
+        }
+    }
+}
