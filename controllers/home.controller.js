@@ -11,7 +11,8 @@ function getHomePage(req, res) {
             res.render("Home/index", {
                 productsInfo,
                 isUser: req.session.userId,
-                isAdmin: req.session.isAdmin
+                isAdmin: req.session.isAdmin,
+                pageTitle: "Home Page - Online Store"
             })
 
         })
@@ -23,7 +24,8 @@ function getHomePage(req, res) {
             res.render("Home/index", {
                 productsInfo,
                 isUser: req.session.userId,
-                isAdmin: req.session.isAdmin
+                isAdmin: req.session.isAdmin,
+                pageTitle: "Home Page - Online Store"
             })
 
         })

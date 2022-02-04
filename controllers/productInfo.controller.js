@@ -9,7 +9,8 @@ function getProductInfo(req, res){
         res.render("ProductInfo/index", {
             productInfo,
             isUser: req.session.userId,
-            isAdmin: req.session.isAdmin
+            isAdmin: req.session.isAdmin,
+            pageTitle: "Product Info Page - Online Store"
         })
 
     } )
@@ -32,7 +33,7 @@ function postAddProduct(req, res) {
 
     }).catch(err => {
 
-        console.log(err)
+        res.redirect("/errors")
 
     })
 

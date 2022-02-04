@@ -5,8 +5,12 @@ function getSignupPage(req, res){
     res.render("Signup/index", {
 
         signupError: req.flash('signupError')[0],
+
         isUser: req.session.userId,
-        isAdmin: false
+
+        isAdmin: false,
+
+        pageTitle: "Signup Page - Online Store"
 
     })
 
@@ -17,8 +21,12 @@ function getLoginPage(req, res){
     res.render("Login/index", {
 
         loginError: req.flash('loginError')[0],
+
         isUser: req.session.userId,
-        isAdmin: false
+
+        isAdmin: false,
+
+        pageTitle: "Login Page - Online Store"
 
     })
 

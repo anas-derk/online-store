@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <%- include("../components/public.meta.tags.ejs") %>
-        <title>Home Page</title>
+        <title><%= pageTitle %> </title>
         <%- include("../components/public.style.tags.ejs") %> 
         <link rel="stylesheet" href="/css/Home/style.min.css">
     </head>
@@ -18,6 +18,7 @@
                 <!-- Start Products Filter Form -->
                 <form action="/" class="products-filter-form text-center" method="get">
                     <select name="category" class="form-select">
+                        <option value="" hidden>Choose Category</option>
                         <option value="all">All</option>
                         <option value="phones">Phones</option>
                         <option value="clothes">Clothes</option>

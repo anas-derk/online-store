@@ -10,30 +10,39 @@ function getCartPage(req, res) {
 
             carts: carts,
 
-            isAdmin: req.session.isAdmin
+            isAdmin: req.session.isAdmin,
+
+            pageTitle: "Cart Page - Online Store"
 
         })
 
-    }).catch(err => console.log(err))
+    }).catch(err => res.redirect("/errors") )
 
 }
 
 function postCart(req, res) {
 
     cartModel.add_new_item({
+
         name: req.body.name,
+
         price: req.body.price,
+
         amount: req.body.amount,
+
         productId: req.body.productId,
+
         userId: req.session.userId,
+
         timestamp: Date.now()
+
     }).then(() => {
 
         res.redirect("/cart")
 
     }).catch(err => {
 
-        res.redirect('/')
+        res.redirect("/errors")
 
     })
 
@@ -47,7 +56,7 @@ function postSave(req, res) {
 
     }).catch(err => {
 
-        res.redirect('/')
+        res.redirect("/errors")
 
     })
 
@@ -59,7 +68,7 @@ function postDelete(req, res) {
 
         res.redirect("/cart")
 
-    }).catch(err => console.log(err))
+    }).catch(err => res.redirect("/errors") )
 
 }
 

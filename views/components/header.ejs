@@ -8,17 +8,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link <%= pageTitle === 'Home Page - Online Store'? 'active': '' %>" aria-current="page" href="/">Home</a>
                     <% if (isUser) { %>
-                        <a class="nav-link" href="/cart">Cart</a>
-                        <a class="nav-link" href="/orders">Orders</a>
+                        <a class="nav-link <%= pageTitle === 'Cart Page - Online Store'? 'active': '' %> " href="/cart">Cart</a>
+                        <a class="nav-link <%= pageTitle === 'Orders Page - Online Store'? 'active': '' %> " href="/orders">Orders</a>
                     <% } else { %>
-                        <a class="nav-link" href="/login">Login</a>
-                        <a class="nav-link" href="/signup">Signup</a>
+                        <a class="nav-link <%= pageTitle === 'Login Page - Online Store'? 'active': '' %> " href="/login">Login</a>
+                        <a class="nav-link <%= pageTitle === 'Signup Page - Online Store'? 'active': '' %> " href="/signup">Signup</a>
                     <% } %>
                     <% if (isAdmin) { %>
-                        <a class="nav-link" href="/admin/add-product">Add Product</a>
-                        <a class="nav-link" href="/admin/manage-orders">Manage Orders</a>
+                        <a class="nav-link <%= pageTitle === 'Add Product - Online Store'? 'active': '' %> " href="/admin/add-product">Add Product</a>
+                        <a class="nav-link <%= pageTitle === 'Manage Orders - Online Store'? 'active': '' %> " href="/admin/manage-orders">Manage Orders</a>
                     <% } %>
                     <% if (isUser) { %>
                         <form action="/logout" method="get">

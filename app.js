@@ -58,9 +58,15 @@ app.use('/', cartRouter)
 
 app.use("/admin", adminRouter)
 
+app.use("/errors", (req, res) => {
+
+    res.status(500).render("errorsNotExpected/index", {pageTitle: "Errors Page"})
+
+})
+
 app.use( (req, res) => {
 
-    res.status(404).render("pageNotFound/index")
+    res.status(404).render("pageNotFound/index", {pageTitle: "Page Not Found"} )
 
 } )
 

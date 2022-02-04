@@ -4,7 +4,9 @@ function getAddProductPage(req, res) {
 
         isUser: req.session.userId,
 
-        isAdmin: true
+        isAdmin: true,
+
+        pageTitle: "Add Product - Online Store"
 
     })
 
