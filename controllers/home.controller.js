@@ -4,7 +4,7 @@ function getHomePage(req, res) {
 
     let category = req.query.category
 
-    if (category === "all" || category === "") {
+    if (category === "all" || category === undefined) {
 
         productModel.get_all_products_info().then(productsInfo => {
 
@@ -12,9 +12,30 @@ function getHomePage(req, res) {
                 productsInfo,
                 isUser: req.session.userId,
                 isAdmin: req.session.isAdmin,
-                pageTitle: "Home Page - Online Store"
+                pageTitle: "Home Page - Online Store",
+                notFoundProducts: ''
             })
 
+        }).catch(err => {
+
+            if(err === "There is not Products !!") {
+            
+                req.flash("notFoundProductsError", err)
+
+                res.render("Home/index", {
+                    productsInfo: [],
+                    isUser: req.session.userId,
+                    isAdmin: req.session.isAdmin,
+                    pageTitle: "Home Page - Online Store",
+                    notFoundProducts: req.flash("notFoundProductsError")[0]
+                })
+
+            } else {
+
+                res.redirect("/errors")
+            
+            }
+        
         })
 
     } else {
@@ -25,8 +46,29 @@ function getHomePage(req, res) {
                 productsInfo,
                 isUser: req.session.userId,
                 isAdmin: req.session.isAdmin,
-                pageTitle: "Home Page - Online Store"
+                pageTitle: "Home Page - Online Store",
+                notFoundProducts: ''
             })
+
+        }).catch(err => {
+
+            if(err === "There is not Products !!") {
+            
+                req.flash("notFoundProductsError", err)
+
+                res.render("Home/index", {
+                    productsInfo: [],
+                    isUser: req.session.userId,
+                    isAdmin: req.session.isAdmin,
+                    pageTitle: "Home Page - Online Store",
+                    notFoundProducts: req.flash("notFoundProductsError")[0]
+                })
+
+            } else {
+
+                res.redirect("/errors")
+            
+            }
 
         })
 

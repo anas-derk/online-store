@@ -27,6 +27,11 @@
                     <button type="submit" class="btn btn-danger products-filter-button">Products Filter</button>
                 </form>
                 <!-- End Products Filter Form -->
+                <% if (notFoundProducts === "There is not Products !!") { %>
+                    <p class="alert alert-danger">
+                        <%= notFoundProducts %> 
+                    </p>
+                <% } %>
                 <!-- Start Grid System -->
                 <div class="row">
                     <% for( let productInfo of productsInfo ) { %>
@@ -53,7 +58,7 @@
                                     <li>
                                         Product Name: 
                                         <a  class="card-title product-name"
-                                            href="/product-info/<%= productInfo.id %>"
+                                            href="/product-info/<%= productInfo._id %>"
                                             target="_blank"
                                         >
                                             <span class="fw-bold"><%= productInfo.name %></span>
@@ -73,7 +78,7 @@
                                         <input type="number" name="amount" class="form-control" required min="1" max="6">
                                         <input type="hidden" name="name" value="<%= productInfo.name %> ">
                                         <input type="hidden" name="price" value="<%= productInfo.price %> ">
-                                        <input type="hidden" name="productId" value="<%= productInfo.id %> ">
+                                        <input type="hidden" name="productId" value="<%= productInfo._id %> ">
                                         <button type="submit" class="btn btn-primary add-to-cart">
                                             Add to cart
                                         </button>

@@ -4,7 +4,6 @@ const cartSchema = mongoose.Schema({
     name: String,
     price: Number,
     amount: Number,
-    productId: Number,
     userId: String,
     timestamp: Date
 })

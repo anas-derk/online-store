@@ -2,7 +2,6 @@ const mongoose = require("mongoose")
 
 const productSchema = mongoose.Schema(
     {
-        id: Number,
         productImageSrc: String,
         name: String,
         price: Number,
@@ -25,9 +24,19 @@ function get_all_products_info(){
 
         } ).then( productsInfo => {
 
-            mongoose.disconnect()
+            if(productsInfo.length == 0) {
 
-            resolve(productsInfo)
+                mongoose.disconnect()
+
+                reject("There is not Products !!")
+
+            } else {
+
+                mongoose.disconnect()
+
+                resolve(productsInfo)
+            
+            }
 
         } ).catch(err => {
 
@@ -51,9 +60,19 @@ function get_products_by_category(category){
 
         } ).then(productsInfo => {
 
-            mongoose.disconnect()
+            if(productsInfo.length == 0) {
 
-            resolve(productsInfo)
+                mongoose.disconnect()
+
+                reject("There is not Products !!")
+
+            } else {
+
+                mongoose.disconnect()
+
+                resolve(productsInfo)
+            
+            }
 
         }).catch(err => {
 
@@ -73,7 +92,7 @@ function get_product_info_by_id(id){
 
         mongoose.connect(DB_URL).then( () => {
 
-            return productModel.findOne({id: id})
+            return productModel.findById(id)
 
         } ).then(productInfo => {
 

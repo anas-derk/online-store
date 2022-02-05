@@ -4,7 +4,7 @@ function getSignupPage(req, res){
 
     res.render("Signup/index", {
 
-        signupError: req.flash('signupError')[0],
+        signupError: req.flash('authErrors')[0],
 
         isUser: req.session.userId,
 
@@ -20,7 +20,7 @@ function getLoginPage(req, res){
 
     res.render("Login/index", {
 
-        loginError: req.flash('loginError')[0],
+        loginError: req.flash('authErrors')[0],
 
         isUser: req.session.userId,
 
@@ -40,7 +40,7 @@ function postSignup(req, res){
 
     }).catch(err => {
 
-        req.flash('signupError', err)
+        req.flash("authErrors", err)
 
         res.redirect("/signup")
 
@@ -60,7 +60,7 @@ function postLogin(req, res){
 
     }).catch(err => {
 
-        req.flash('loginError', err)
+        req.flash('authErrors', err)
 
         res.redirect("/login")
 

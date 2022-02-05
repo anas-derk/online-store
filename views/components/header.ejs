@@ -11,15 +11,12 @@
                     <a class="nav-link <%= pageTitle === 'Home Page - Online Store'? 'active': '' %>" aria-current="page" href="/">Home</a>
                     <% if (isUser) { %>
                         <a class="nav-link <%= pageTitle === 'Cart Page - Online Store'? 'active': '' %> " href="/cart">Cart</a>
-                        <a class="nav-link <%= pageTitle === 'Orders Page - Online Store'? 'active': '' %> " href="/orders">Orders</a>
                     <% } else { %>
                         <a class="nav-link <%= pageTitle === 'Login Page - Online Store'? 'active': '' %> " href="/login">Login</a>
                         <a class="nav-link <%= pageTitle === 'Signup Page - Online Store'? 'active': '' %> " href="/signup">Signup</a>
                     <% } %>
                     <% if (isAdmin) { %>
-                        <a class="nav-link <%= pageTitle === 'Add Product - Online Store'? 'active': '' %> " href="/admin/add-product">Add Product</a>
-                        <a class="nav-link <%= pageTitle === 'Manage Orders - Online Store'? 'active': '' %> " href="/admin/manage-orders">Manage Orders</a>
-                    <% } %>
+                        <a class="nav-link <%= pageTitle === 'Add Product - Online Store'? 'active': '' %> " href="/admin/add-product">Add Product</a>                    <% } %>
                     <% if (isUser) { %>
                         <form action="/logout" method="get">
                             <button type="submit" class="btn btn-danger">Logout</button>

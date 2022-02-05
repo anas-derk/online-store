@@ -6,12 +6,11 @@
   margin-bottom: 20px;
 }
 
-.signup p {
-  margin-bottom: 0;
+.signup p.error-in-user-side {
   display: none;
 }
 
-.signup p.displayed {
+.signup p.error-in-user-side.displayed {
   display: block;
 }
 

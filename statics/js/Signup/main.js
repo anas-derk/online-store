@@ -2,7 +2,7 @@ let passwordInputField      =  document.querySelector(".signup .signup-form .pas
 
     rewritePasswordField    = document.querySelector(".signup .signup-form .confirm-password"),
 
-    errorBox = document.querySelector(".signup .container p")
+    errorBox = document.querySelector(".signup .container p.error-in-user-side")
 
 let mainborderColor = "#ced4da"
 
