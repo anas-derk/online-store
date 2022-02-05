@@ -12,7 +12,9 @@ const productSchema = mongoose.Schema(
 
 const productModel = mongoose.model("product", productSchema)
 
-const DB_URL = "mongodb://localhost:27017/online-shop"
+const dbUrl = require("./DB_URL")
+
+const DB_URL = dbUrl
 
 function get_all_products_info(){
 

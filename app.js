@@ -23,8 +23,10 @@ app.use( express.static( path.join(__dirname, "statics") ) )
 
 // use express session module
 
+const DB_URL = require("./models/DB_URL")
+
 const store = new MongoDBStore({
-    uri: "mongodb://localhost:27017/online-shop",
+    uri: DB_URL,
     collection: "sessions"
 })
 
@@ -70,8 +72,10 @@ app.use( (req, res) => {
 
 } )
 
-app.listen(3000, "localhost", (err) => {
+const port = process.env.PORT || 3000
 
-    console.log("The server is running on: http://localhost:3000")
+app.listen(port, "localhost", (err) => {
+
+    console.log("The server is running on: http://localhost:" + port)
 
 } )
