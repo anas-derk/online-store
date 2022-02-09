@@ -11,7 +11,9 @@ const cartSchema = mongoose.Schema({
 
 const cartModel = mongoose.model("cart", cartSchema)
 
-const DB_URL = "mongodb://localhost:27017/online-shop"
+const dbUrl = require("./DB_URL")
+
+const DB_URL = dbUrl
 
 function add_new_item(item) {
 

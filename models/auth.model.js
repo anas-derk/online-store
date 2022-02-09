@@ -12,7 +12,9 @@ const userSchema = mongoose.Schema({
 
 const userModel = mongoose.model("user", userSchema)
 
-const DB_URL = "mongodb://localhost:27017/online-shop" 
+const dbUrl = require("./DB_URL")
+
+const DB_URL = dbUrl 
 
 const bcrypt = require("bcrypt")
 
