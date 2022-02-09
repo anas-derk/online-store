@@ -14,4 +14,6 @@ cartRouter.post("/cart/save", authGuard.isAuth, bodyParser.urlencoded({extended:
 
 cartRouter.post("/cart/delete", authGuard.isAuth, bodyParser.urlencoded({extended: true}) , cartController.postDelete)
 
+cartRouter.post("/cart/delete-all", authGuard.isAuth, cartController.postDeleteAll)
+
 module.exports = cartRouter

@@ -54,12 +54,22 @@
                                     <td>
                                         <input type="hidden" name="cartId" value="<%= carts[i].productId %>">
                                         <button type="submit" class="btn btn-success" formaction="/cart/save">Save</button>
+                                        <button type="submit" class="btn btn-success" formaction="/cart/order">Order</button>
                                         <button type="submit" class="btn btn-danger" formaction="/cart/delete">Delete</button>
                                     </td>
                                 </form>
                             </tr>
                         <% } %>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <form method="post">
+                                <td colspan="6">
+                                    <button type="submit" class="btn btn-danger" formaction="/cart/delete-all">Delete All</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <!-- End Container -->

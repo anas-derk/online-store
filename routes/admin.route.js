@@ -8,10 +8,10 @@ const multer = require("multer")
 
 const storage = multer.diskStorage({
     destination: (req, res, cb) => {
-        cb(null, "statics/images/products")
+        cb(null, "statics/images/products/addedProductsImages")
     },
     filename: (req, res, cb) => {
-        cb(null, Date.now() + "clothes.jpg")
+        cb(null, Date.now() + "newProduct.jpg")
     }
 })
 

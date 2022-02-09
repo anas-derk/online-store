@@ -72,4 +72,14 @@ function postDelete(req, res) {
 
 }
 
-module.exports = { getCartPage, postCart, postDelete, postSave }
+function postDeleteAll(req, res){
+
+    cartModel.delete_all_item(req.session.userId).then(() => {
+
+        res.redirect("/cart")
+
+    }).catch(err => res.redirect("/errors") )
+
+}
+
+module.exports = { getCartPage, postCart, postDelete, postSave, postDeleteAll }
