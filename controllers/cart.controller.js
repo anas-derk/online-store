@@ -62,6 +62,46 @@ function postSave(req, res) {
 
 }
 
+function postOrder(req, res) {
+
+    cartModel.productOrder({
+
+        name: req.body.name,
+
+        price: req.body.price,
+
+        amount: req.body.amount,
+
+        productId: req.body.productId,
+
+        userId: req.session.userId,
+
+        timestamp: Date.now()
+
+    }).then(productInfo => {
+
+        req.flash("productInfo", productInfo)
+
+        res.redirect("/cart/verify-orders")
+
+    }).catch(err => res.redirect("/errors") )
+
+}
+
+function getVerifyOrdersPage(req, res) {
+
+    res.render("VerifyOrders/index", {
+
+        isUser: true,
+
+        isAdmin: req.session.isAdmin,
+
+        pageTitle: "Verify Orders Page - Online Store"
+    
+    })
+
+}
+
 function postDelete(req, res) {
 
     cartModel.deleteItem(req.body.cartId).then(() => {
@@ -82,4 +122,23 @@ function postDeleteAll(req, res){
 
 }
 
-module.exports = { getCartPage, postCart, postDelete, postSave, postDeleteAll }
+function postOrderAll(req, res) {
+
+    cartModel.order_all_item().then(() => {
+
+
+
+    }).catch(err => res.redirect("/errors") )
+
+}
+
+module.exports = {
+    getCartPage,
+    postCart,
+    postDelete,
+    postSave,
+    postDeleteAll,
+    postOrder,
+    postOrderAll,
+    getVerifyOrdersPage
+}

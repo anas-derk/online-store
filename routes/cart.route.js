@@ -12,8 +12,14 @@ cartRouter.post("/cart", authGuard.isAuth, bodyParser.urlencoded({extended: true
 
 cartRouter.post("/cart/save", authGuard.isAuth, bodyParser.urlencoded({extended: true}), cartController.postSave)
 
-cartRouter.post("/cart/delete", authGuard.isAuth, bodyParser.urlencoded({extended: true}) , cartController.postDelete)
+cartRouter.post("/cart/order", authGuard.isAuth, bodyParser.urlencoded({extended: true}), cartController.postOrder)
+
+cartRouter.get("/cart/verify-orders", authGuard.isAuth, bodyParser.urlencoded({extended: true}), cartController.getVerifyOrdersPage)
+
+cartRouter.post("/cart/delete", authGuard.isAuth, bodyParser.urlencoded({extended: true}), cartController.postDelete)
 
 cartRouter.post("/cart/delete-all", authGuard.isAuth, cartController.postDeleteAll)
+
+cartRouter.post("/cart/order-all", authGuard.isAuth, bodyParser.urlencoded({extended: true}), cartController.postOrderAll)
 
 module.exports = cartRouter

@@ -128,13 +128,33 @@ function editItem(cartId, newAmount) {
 
 }
 
-function delete_all_item(userId){
+function productOrder(productInfo) {
 
     return new Promise( (resolve, reject) => {
 
         mongoose.connect(DB_URL).then(() => {
 
-            return cartModel.deleteMany({userId: userId})
+            resolve(productInfo)
+
+        }).catch(err => {
+
+            mongoose.disconnect()
+
+            reject(err)
+
+        })
+
+    } )
+
+}
+
+function delete_all_item(userId) {
+
+    return new Promise((resolve, reject) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            return cartModel.deleteMany({ userId: userId })
 
         }).then(() => {
 
@@ -145,9 +165,37 @@ function delete_all_item(userId){
             reject(err)
 
         })
-    
+
     })
 
 }
 
-module.exports = { add_new_item, getCartsByUserId, deleteItem, editItem, delete_all_item }
+function order_all_item() {
+
+    return new Promise( (resolve, reject) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            
+
+        }).catch(err => {
+
+            mongoose.disconnect()
+
+            reject(err)
+
+        })
+
+    } )
+
+}
+
+module.exports = {
+    add_new_item,
+    getCartsByUserId,
+    deleteItem,
+    editItem,
+    delete_all_item,
+    productOrder,
+    order_all_item
+}

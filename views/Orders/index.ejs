@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../components/public.meta.tags.ejs") %>
+        <title><%= pageTitle %></title>
+        <%- include("../components/public.style.tags.ejs") %>
+    </head>
+    <body>
+        <!-- Start Header -->
+        <%- include("../components/header") %> 
+        <!-- End Header -->
+        <!-- Start Orders -->
+        <section class="orders">
+            <h1 class="text-center fw-bold">Orders</h1>
+            <!-- Start Container -->
+            <div class="container text-center">
+                <table>
+                    <thead class="fw-bold">
+                        <tr>
+                            <td>no</td>
+                            <td>Product Name</td>
+                            <td>Price</td>
+                            <td>Amount</td>
+                            <td>Total</td>
+                            <td>Status</td>
+                            <td>Time</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let i = 0; i < orders.length; i++ ) { %>
+                            <tr>
+                                <td>
+                                    <%= i + 1 %>
+                                </td>
+                                <td>
+                                    <%= orders[i].name %>
+                                </td>
+                                <td>
+                                    <%= orders[i].price %> $
+                                </td>
+                                <form method="post">
+                                    <td>
+                                        <%= orders[i].amount %>
+                                    </td>
+                                    <td>
+                                        <%= orders[i].price * orders[i].amount %> $
+                                    </td>
+                                    <td class="fw-bold">
+                                        <%= orders[i].status %> 
+                                    </td>
+                                    <td>
+                                        <%= orders[i].time %> 
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="productId" value="<%= orders[i].productId %>">
+                                        <button type="submit" class="btn btn-success" formaction="/orders/cancel">Cancel</button>
+                                    </td>
+                                </form>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Container -->
+        </section>
+        <!-- End Orders -->
+        <%- include("../components/public.script.tags.ejs") %> 
+    </body>
+</html>

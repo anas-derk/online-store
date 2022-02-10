@@ -98,3 +98,16 @@ a {
 .product-image-box .overlay:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+.cart table, .orders table {
+  margin: auto;
+  width: 100%;
+}
+
+.cart table td, .orders table td {
+  padding: 10px;
+}
+
+.cart table tr, .cart table td, .orders table tr, .orders table td {
+  border: 2px solid #000;
+}

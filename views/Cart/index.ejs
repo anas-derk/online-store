@@ -4,7 +4,6 @@
         <%- include("../components/public.meta.tags.ejs") %>
         <title><%= pageTitle %></title>
         <%- include("../components/public.style.tags.ejs") %> 
-        <link rel="stylesheet" href="/css/Cart/style.min.css">
     </head>
     <body>
         <!-- Start Header -->
@@ -52,7 +51,9 @@
                                         <%= carts[i].price * carts[i].amount %> $
                                     </td>
                                     <td>
-                                        <input type="hidden" name="cartId" value="<%= carts[i].productId %>">
+                                        <input type="hidden" name="productId" value="<%= carts[i].productId %>">
+                                        <input type="hidden" name="name" value="<%= carts[i].name %>">
+                                        <input type="hidden" name="price" value="<%= carts[i].price %>">
                                         <button type="submit" class="btn btn-success" formaction="/cart/save">Save</button>
                                         <button type="submit" class="btn btn-success" formaction="/cart/order">Order</button>
                                         <button type="submit" class="btn btn-danger" formaction="/cart/delete">Delete</button>
