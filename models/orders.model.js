@@ -14,7 +14,9 @@ const ordersSchema = mongoose.Schema({
     time: Date
 })
 
-const orderModel = mongoose.model("order", ordersSchema)
+const   orderModel = mongoose.model("order", ordersSchema),
+
+        cartModel = require("../models/cart.model")
 
 const dbUrl = require("./DB_URL")
 
@@ -67,11 +69,41 @@ function getOrdersByUserId(userId) {
             mongoose.disconnect()
 
             reject(err)
-        
+
         })
 
     })
 
 }
 
-module.exports = { addNewOrder, getOrdersByUserId }
+function orderCancel(productId, userId) {
+
+    return new Promise((resolve, reject) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            return orderModel.deleteOne({ productId: productId, userId: userId })
+
+        }).then(() => {
+
+            return cartModel.deleteItem(productId, userId)
+
+        }).then(() => {
+
+            mongoose.disconnect()
+
+            resolve()
+
+        }).catch(err => {
+
+            mongoose.disconnect()
+            
+            reject(err)
+
+        })
+
+    })
+
+}
+
+module.exports = { addNewOrder, getOrdersByUserId, orderCancel }

@@ -104,7 +104,7 @@ function getVerifyOrdersPage(req, res) {
 
 function postDelete(req, res) {
 
-    cartModel.deleteItem(req.body.cartId).then(() => {
+    cartModel.deleteItem(req.body.cartId, req.session.userId).then(() => {
 
         res.redirect("/cart")
 

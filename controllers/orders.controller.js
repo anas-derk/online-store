@@ -38,4 +38,14 @@ function postOrder(req, res) {
 
 }
 
-module.exports = { getOrdersPage, postOrder }
+function postOrderCancel(req, res) {
+
+    orderModel.orderCancel(req.body.productId, req.session.userId).then(() => {
+
+        res.redirect("/orders")
+
+    }).catch(err => res.redirect("/errors") )
+
+}
+
+module.exports = { getOrdersPage, postOrder, postOrderCancel }

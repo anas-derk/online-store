@@ -38,27 +38,36 @@
                                 <td>
                                     <%= orders[i].price %> $
                                 </td>
+                                <td>
+                                    <%= orders[i].amount %>
+                                </td>
+                                <td>
+                                    <%= orders[i].price * orders[i].amount %> $
+                                </td>
+                                <td class="fw-bold">
+                                    <%= orders[i].status %> 
+                                </td>
+                                <td>
+                                    <%= orders[i].time %> 
+                                </td>
                                 <form method="post">
                                     <td>
-                                        <%= orders[i].amount %>
-                                    </td>
-                                    <td>
-                                        <%= orders[i].price * orders[i].amount %> $
-                                    </td>
-                                    <td class="fw-bold">
-                                        <%= orders[i].status %> 
-                                    </td>
-                                    <td>
-                                        <%= orders[i].time %> 
-                                    </td>
-                                    <td>
                                         <input type="hidden" name="productId" value="<%= orders[i].productId %>">
-                                        <button type="submit" class="btn btn-success" formaction="/orders/cancel">Cancel</button>
+                                        <button type="submit" class="btn btn-danger" formaction="/orders/cancel">Cancel</button>
                                     </td>
                                 </form>
                             </tr>
                         <% } %>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <form method="post" action="/orders/cancel-all">
+                                <td colspan="8">
+                                    <button type="submit" class="btn btn-danger">Cancel All</button>
+                                </td>
+                            </form>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <!-- End Container -->

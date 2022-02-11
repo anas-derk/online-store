@@ -78,13 +78,13 @@ function getCartsByUserId(userId) {
 
 }
 
-function deleteItem(cartId) {
+function deleteItem(cartId, userId) {
 
     return new Promise((resolve, reject) => {
 
         mongoose.connect(DB_URL).then(() => {
 
-            return cartModel.deleteOne({ productId: cartId })
+            return cartModel.deleteOne({ productId: cartId, userId: userId })
 
         }).then(() => {
 
@@ -170,7 +170,7 @@ function delete_all_item(userId) {
 
 }
 
-function order_all_item() {
+function order_all_item(userId) {
 
     return new Promise( (resolve, reject) => {
 
