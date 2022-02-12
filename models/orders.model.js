@@ -136,4 +136,30 @@ function orders_all_cancel(userId) {
 
 }
 
-module.exports = { addNewOrder, getOrdersByUserId, orderCancel, orders_all_cancel }
+function addAllOrders(orders){
+
+    return new Promise( (resolve, reject) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            return orderModel.insertMany(orders)
+
+        }).then(() => {
+
+            mongoose.disconnect()
+
+            resolve()
+
+        }).catch(err => {
+
+            mongoose.disconnect()
+
+            reject(err)
+
+        })
+    
+    } )
+
+}
+
+module.exports = { addNewOrder, getOrdersByUserId, orderCancel, orders_all_cancel, addAllOrders }

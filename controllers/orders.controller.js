@@ -9,11 +9,11 @@ function getOrdersPage(req, res) {
             orders: orders,
 
             isUser: true,
-    
+
             isAdmin: req.session.isAdmin,
-    
+
             pageTitle: "Orders Page - Online Store"
-    
+
         })
 
     }).catch(err => res.redirect("/errors"))
@@ -24,17 +24,41 @@ function postOrder(req, res) {
 
     let productInfo = req.flash("productInfo")[0]
 
-    productInfo.address = req.body.address
+    if (productInfo !== undefined) {
 
-    productInfo.time = Date.now()
+        productInfo.address = req.body.address
 
-    let orderInfo = productInfo
+        productInfo.time = Date.now()
 
-    orderObject.addNewOrder(orderInfo).then(() => {
+        let orderInfo = productInfo
 
-        res.redirect("/orders")
+        orderObject.addNewOrder(orderInfo).then(() => {
 
-    }).catch(err => res.redirect("/errors"))
+            res.redirect("/orders")
+
+        }).catch(err => res.redirect("/errors"))
+
+    } else {
+
+        let productsInfo = req.flash("productsInfo")
+
+        for (let i = 0; i < productsInfo.length; i++) {
+
+            productsInfo[i].address = req.body.address
+
+            productsInfo[i].time = Date.now()
+
+        }
+
+        let ordersInfo = productsInfo
+
+        orderObject.addAllOrders(ordersInfo).then(() => {
+
+            res.redirect("/orders")
+
+        }).catch(err => res.redirect("/errors"))
+
+    }
 
 }
 
@@ -44,7 +68,7 @@ function postOrderCancel(req, res) {
 
         res.redirect("/orders")
 
-    }).catch(err => res.redirect("/errors") )
+    }).catch(err => res.redirect("/errors"))
 
 }
 
@@ -54,7 +78,7 @@ function postCancelAll(req, res) {
 
         res.redirect("/orders")
 
-    }).catch(err => res.redirect("/errors") )
+    }).catch(err => res.redirect("/errors"))
 
 }
 
