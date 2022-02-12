@@ -78,13 +78,13 @@ function getCartsByUserId(userId) {
 
 }
 
-function deleteItem(cartId, userId) {
+function deleteItem(productId, userId) {
 
     return new Promise((resolve, reject) => {
 
         mongoose.connect(DB_URL).then(() => {
 
-            return cartModel.deleteOne({ productId: cartId, userId: userId })
+            return cartModel.deleteOne({ productId: productId, userId: userId })
 
         }).then(() => {
 
@@ -104,13 +104,13 @@ function deleteItem(cartId, userId) {
 
 }
 
-function editItem(cartId, newAmount) {
+function editItem(productId, newAmount) {
 
     return new Promise((resolve, reject) => {
 
         mongoose.connect(DB_URL).then(() => {
 
-            return cartModel.updateOne({ productId: cartId }, { amount: newAmount })
+            return cartModel.updateOne({ productId: productId }, { amount: newAmount })
 
         }).then(() => {
 
@@ -170,23 +170,9 @@ function delete_all_item(userId) {
 
 }
 
-function order_all_item(userId) {
+function order_all_items(userId) {
 
-    return new Promise( (resolve, reject) => {
-
-        mongoose.connect(DB_URL).then(() => {
-
-            
-
-        }).catch(err => {
-
-            mongoose.disconnect()
-
-            reject(err)
-
-        })
-
-    } )
+    return getCartsByUserId(userId)
 
 }
 
@@ -197,5 +183,6 @@ module.exports = {
     editItem,
     delete_all_item,
     productOrder,
-    order_all_item
+    order_all_items,
+    cartModel
 }

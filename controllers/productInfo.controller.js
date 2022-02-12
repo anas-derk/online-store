@@ -1,10 +1,10 @@
-const productModel = require("../models/product.model")
+const productObject = require("../models/product.model")
 
-function getProductInfo(req, res){
+function getProductInfo(req, res) {
 
     let productId = req.params.id
 
-    productModel.get_product_info_by_id(productId).then(productInfo => {
+    productObject.get_product_info_by_id(productId).then(productInfo => {
 
         res.render("ProductInfo/index", {
             productInfo,
@@ -13,13 +13,13 @@ function getProductInfo(req, res){
             pageTitle: "Product Info Page - Online Store"
         })
 
-    } )
+    })
 
 }
 
 function postAddProduct(req, res) {
 
-    productModel.addProduct({
+    productObject.addProduct({
 
         productImageSrc: "images/products/" + req.file.originalname,
         name: req.body.name,
@@ -39,4 +39,4 @@ function postAddProduct(req, res) {
 
 }
 
-module.exports = {getProductInfo, postAddProduct}
+module.exports = { getProductInfo, postAddProduct }

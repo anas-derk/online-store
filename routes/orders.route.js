@@ -12,4 +12,6 @@ ordersRouter.post("/orders", authGuard.isAuth, bodyParser.urlencoded({extended: 
 
 ordersRouter.post("/orders/cancel", authGuard.isAuth, bodyParser.urlencoded({extended: true}), ordersCotroller.postOrderCancel)
 
+ordersRouter.post("/orders/cancel-all", authGuard.isAuth, ordersCotroller.postCancelAll)
+
 module.exports = ordersRouter

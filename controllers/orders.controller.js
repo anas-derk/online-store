@@ -1,8 +1,8 @@
-const orderModel = require("../models/orders.model")
+const orderObject = require("../models/orders.model")
 
 function getOrdersPage(req, res) {
 
-    orderModel.getOrdersByUserId(req.session.userId).then(orders => {
+    orderObject.getOrdersByUserId(req.session.userId).then(orders => {
 
         res.render("Orders/index", {
 
@@ -30,7 +30,7 @@ function postOrder(req, res) {
 
     let orderInfo = productInfo
 
-    orderModel.addNewOrder(orderInfo).then(() => {
+    orderObject.addNewOrder(orderInfo).then(() => {
 
         res.redirect("/orders")
 
@@ -40,7 +40,7 @@ function postOrder(req, res) {
 
 function postOrderCancel(req, res) {
 
-    orderModel.orderCancel(req.body.productId, req.session.userId).then(() => {
+    orderObject.orderCancel(req.body.productId, req.session.userId).then(() => {
 
         res.redirect("/orders")
 
@@ -48,4 +48,14 @@ function postOrderCancel(req, res) {
 
 }
 
-module.exports = { getOrdersPage, postOrder, postOrderCancel }
+function postCancelAll(req, res) {
+
+    orderObject.orders_all_cancel(req.session.userId).then(() => {
+
+        res.redirect("/orders")
+
+    }).catch(err => res.redirect("/errors") )
+
+}
+
+module.exports = { getOrdersPage, postOrder, postOrderCancel, postCancelAll }

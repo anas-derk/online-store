@@ -1,4 +1,4 @@
-const authModel = require("../models/auth.model")
+const authObject = require("../models/auth.model")
 
 function getSignupPage(req, res){
 
@@ -34,7 +34,7 @@ function getLoginPage(req, res){
 
 function postSignup(req, res){
 
-    authModel.createUserAccount(req.body.username, req.body.email, req.body.password).then(() => {
+    authObject.createUserAccount(req.body.username, req.body.email, req.body.password).then(() => {
 
         res.redirect("/login")
 
@@ -50,7 +50,7 @@ function postSignup(req, res){
 
 function postLogin(req, res){
 
-    authModel.login(req.body.email, req.body.password).then(result => {
+    authObject.login(req.body.email, req.body.password).then(result => {
 
         req.session.userId = result.userId
 

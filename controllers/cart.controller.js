@@ -1,8 +1,8 @@
-const cartModel = require("../models/cart.model")
+const cartObject = require("../models/cart.model")
 
 function getCartPage(req, res) {
 
-    cartModel.getCartsByUserId(req.session.userId).then(carts => {
+    cartObject.getCartsByUserId(req.session.userId).then(carts => {
 
         res.render("Cart/index", {
 
@@ -22,7 +22,7 @@ function getCartPage(req, res) {
 
 function postCart(req, res) {
 
-    cartModel.add_new_item({
+    cartObject.add_new_item({
 
         name: req.body.name,
 
@@ -50,7 +50,7 @@ function postCart(req, res) {
 
 function postSave(req, res) {
 
-    cartModel.editItem(req.body.cartId, req.body.amount).then(() => {
+    cartObject.editItem(req.body.productId, req.body.amount).then(() => {
 
         res.redirect("/cart")
 
@@ -64,7 +64,7 @@ function postSave(req, res) {
 
 function postOrder(req, res) {
 
-    cartModel.productOrder({
+    cartObject.productOrder({
 
         name: req.body.name,
 
@@ -104,7 +104,7 @@ function getVerifyOrdersPage(req, res) {
 
 function postDelete(req, res) {
 
-    cartModel.deleteItem(req.body.cartId, req.session.userId).then(() => {
+    cartObject.deleteItem(req.body.productId, req.session.userId).then(() => {
 
         res.redirect("/cart")
 
@@ -114,7 +114,7 @@ function postDelete(req, res) {
 
 function postDeleteAll(req, res){
 
-    cartModel.delete_all_item(req.session.userId).then(() => {
+    cartObject.delete_all_item(req.session.userId).then(() => {
 
         res.redirect("/cart")
 
@@ -124,9 +124,11 @@ function postDeleteAll(req, res){
 
 function postOrderAll(req, res) {
 
-    cartModel.order_all_item().then(() => {
+    cartObject.order_all_items(req.session.userId).then(carts => {
 
+        req.flash("productsInfo", carts)
 
+        res.redirect("/cart/verify-orders")
 
     }).catch(err => res.redirect("/errors") )
 

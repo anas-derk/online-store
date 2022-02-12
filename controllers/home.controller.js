@@ -1,4 +1,4 @@
-const productModel = require("../models/product.model")
+const productObject = require("../models/product.model")
 
 function getHomePage(req, res) {
 
@@ -6,7 +6,7 @@ function getHomePage(req, res) {
 
     if (category === "all" || category === undefined) {
 
-        productModel.get_all_products_info().then(productsInfo => {
+        productObject.get_all_products_info().then(productsInfo => {
 
             res.render("Home/index", {
                 productsInfo,
@@ -40,7 +40,7 @@ function getHomePage(req, res) {
 
     } else {
 
-        productModel.get_products_by_category(category).then(productsInfo => {
+        productObject.get_products_by_category(category).then(productsInfo => {
 
             res.render("Home/index", {
                 productsInfo,
