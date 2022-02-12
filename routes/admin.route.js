@@ -17,9 +17,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage})
 
-const bodyParser = require("body-parser")
-
 const productController = require("../controllers/productInfo.controller")
+
+const bodyParser = require("body-parser")
 
 adminRouter.get("/add-product", adminGuard.isAdmin, adminController.getAddProductPage)
 
@@ -29,6 +29,15 @@ adminRouter.post(
     upload.single('file'),
     bodyParser.urlencoded({extended: true}),
     productController.postAddProduct
+)
+
+adminRouter.get("/manage-orders", adminGuard.isAdmin, adminController.getManageOrdersPage)
+
+adminRouter.post(
+    "/manage-orders/order-status-edit",
+    adminGuard.isAdmin,
+    bodyParser.urlencoded({extended: true}),
+    adminController.post_order_status_edit
 )
 
 module.exports = adminRouter

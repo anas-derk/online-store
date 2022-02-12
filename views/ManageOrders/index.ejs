@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../components/public.meta.tags.ejs") %>
+        <title><%= pageTitle %></title>
+        <%- include("../components/public.style.tags.ejs") %>
+        <link rel="stylesheet" href="/css/ManageOrders/style.min.css">
+    </head>
+    <body>
+        <!-- Start Header -->
+        <%- include("../components/header") %> 
+        <!-- End Header -->
+        <!-- Start Manage Orders -->
+        <section class="orders">
+            <h1 class="text-center fw-bold">Manage Orders</h1>
+            <!-- Start Container -->
+            <div class="container text-center">
+                <form class="orders-filter-form">
+                    <button type="submit" class="btn btn-primary">All</button>
+                    <button type="submit" class="btn btn-primary">Pending</button>
+                    <button type="submit" class="btn btn-primary">Sent</button>
+                    <button type="submit" class="btn btn-primary">Completed</button>
+                </form>
+                <table>
+                    <thead class="fw-bold">
+                        <tr>
+                            <td>no</td>
+                            <td>Product Name</td>
+                            <td>Price</td>
+                            <td>Amount</td>
+                            <td>Total</td>
+                            <td>Address</td>
+                            <td>Status</td>
+                            <td>Time</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let i = 0; i < orders.length; i++ ) { %>
+                            <tr>
+                                <td>
+                                    <%= i + 1 %> 
+                                </td>
+                                <td>
+                                    <%= orders[i].name %>
+                                </td>
+                                <td>
+                                    <%= orders[i].price %> $
+                                </td>
+                                <td>
+                                    <%= orders[i].amount %>
+                                </td>
+                                <td>
+                                    <%= orders[i].price * orders[i].amount %> $
+                                </td>
+                                <td>
+                                    <%= orders[i].address %>
+                                </td>
+                                <form method="post" action="/admin/manage-orders/order-status-edit">
+                                    <td class="fw-bold">
+                                        <input
+                                            type="text"
+                                            value="<%= orders[i].status %>"
+                                            class="form-control"
+                                            name="orderStatus"
+                                        >
+                                    </td>
+                                    <td>
+                                        <%= orders[i].time %> 
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="productId" value="<%= orders[i].productId %>">
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                    </td>
+                                </form>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Container -->
+        </section>
+        <!-- End Manage Orders -->
+        <%- include("../components/public.script.tags.ejs") %> 
+    </body>
+</html>

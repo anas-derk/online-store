@@ -1,0 +1,11 @@
+.orders-filter-form {
+  margin-bottom: 30px;
+}
+
+.orders-filter-form button {
+  width: 150px;
+}
+
+.orders-filter-form button:not(:last-child) {
+  margin-right: 30px;
+}

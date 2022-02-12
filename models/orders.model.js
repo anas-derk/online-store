@@ -136,9 +136,9 @@ function orders_all_cancel(userId) {
 
 }
 
-function addAllOrders(orders){
+function addAllOrders(orders) {
 
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
         mongoose.connect(DB_URL).then(() => {
 
@@ -157,9 +157,69 @@ function addAllOrders(orders){
             reject(err)
 
         })
+
+    })
+
+}
+
+function getAllOrders() {
+
+    return new Promise( (resolve, reject) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            return orderModel.find({})
+
+        }).then(orders => {
+
+            mongoose.disconnect()
+
+            resolve(orders)
+
+        }).catch(err => {
+
+            mongoose.disconnect()
+
+            reject(err)
+
+        })
     
     } )
 
 }
 
-module.exports = { addNewOrder, getOrdersByUserId, orderCancel, orders_all_cancel, addAllOrders }
+function orderStatusEdit(productId, newStatus) {
+
+    return new Promise( (resolve, reject) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            return orderModel.updateOne({productId: productId}, {status: newStatus})
+
+        }).then(() => {
+
+            mongoose.disconnect()
+
+            resolve()
+
+        }).catch(err => {
+
+            mongoose.disconnect()
+
+            reject(err)
+
+        })
+
+    } )
+
+}
+
+module.exports = {
+    addNewOrder,
+    getOrdersByUserId,
+    orderCancel,
+    orders_all_cancel,
+    addAllOrders,
+    getAllOrders,
+    orderStatusEdit
+}

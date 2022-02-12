@@ -117,4 +117,4 @@ function login(email, password){
 
 }
 
-module.exports = {createUserAccount, login}
+module.exports = {createUserAccount, login, userModel}

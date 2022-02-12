@@ -1,8 +1,10 @@
+const ordersObject = require("../models/orders.model")
+
 function getAddProductPage(req, res) {
 
     res.render("AddProduct/index", {
 
-        isUser: req.session.userId,
+        isUser: true,
 
         isAdmin: true,
 
@@ -12,4 +14,34 @@ function getAddProductPage(req, res) {
 
 }
 
-module.exports = { getAddProductPage }
+function getManageOrdersPage(req, res) {
+
+    ordersObject.getAllOrders().then(orders => {
+
+        res.render("ManageOrders/index", {
+
+            isUser: true,
+
+            isAdmin: true,
+
+            pageTitle: "Manage Orders - Online Store",
+
+            orders: orders
+
+        })
+
+    }).catch(err => res.redirect("/errors"))
+
+}
+
+function post_order_status_edit(req, res) {
+
+    ordersObject.orderStatusEdit(req.body.productId, req.body.orderStatus).then(() => {
+
+        res.redirect("/admin/manage-orders")
+
+    }).catch(err => res.redirect("/errors") )
+
+}
+
+module.exports = { getAddProductPage, getManageOrdersPage, post_order_status_edit }
