@@ -214,6 +214,32 @@ function orderStatusEdit(productId, newStatus) {
 
 }
 
+function getOrdersByStatus(status) {
+
+    return new Promise( (resolve, rejct) => {
+
+        mongoose.connect(DB_URL).then(() => {
+
+            return orderModel.find({status: status})
+
+        }).then(orders => {
+
+            mongoose.disconnect()
+
+            resolve(orders)
+
+        }).catch(err => {
+
+            mongoose.disconnect()
+
+            reject(err)
+
+        })
+
+    } )
+
+}
+
 module.exports = {
     addNewOrder,
     getOrdersByUserId,
@@ -221,5 +247,6 @@ module.exports = {
     orders_all_cancel,
     addAllOrders,
     getAllOrders,
-    orderStatusEdit
+    orderStatusEdit,
+    getOrdersByStatus,
 }

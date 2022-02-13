@@ -40,4 +40,12 @@ adminRouter.post(
     adminController.post_order_status_edit
 )
 
+adminRouter.get("/manage-orders/all-orders", adminGuard.isAdmin, adminController.getManageOrdersPage)
+
+adminRouter.get("/manage-orders/pending-orders", adminGuard.isAdmin, adminController.getPendingOrders)
+
+adminRouter.get("/manage-orders/sent-orders", adminGuard.isAdmin, adminController.getSentOrders)
+
+adminRouter.get("/manage-orders/completed-orders", adminGuard.isAdmin, adminController.getCompletedOrders)
+
 module.exports = adminRouter

@@ -44,4 +44,71 @@ function post_order_status_edit(req, res) {
 
 }
 
-module.exports = { getAddProductPage, getManageOrdersPage, post_order_status_edit }
+function getPendingOrders(req, res) {
+
+    ordersObject.getOrdersByStatus("Pending").then(orders => {
+
+        res.render("ManageOrders/index", {
+
+            isUser: true,
+
+            isAdmin: true,
+
+            pageTitle: "Manage Orders - Online Store",
+
+            orders: orders
+
+        })
+
+    }).catch(err => res.redirect("/errors"))
+
+}
+
+function getSentOrders(req, res) {
+
+    ordersObject.getOrdersByStatus("Sent").then(orders => {
+
+        res.render("ManageOrders/index", {
+
+            isUser: true,
+
+            isAdmin: true,
+
+            pageTitle: "Manage Orders - Online Store",
+
+            orders: orders
+
+        })
+
+    }).catch(err => res.redirect("/errors"))
+
+}
+
+function getCompletedOrders(req, res) {
+
+    ordersObject.getOrdersByStatus("Completed").then(orders => {
+
+        res.render("ManageOrders/index", {
+
+            isUser: true,
+
+            isAdmin: true,
+
+            pageTitle: "Manage Orders - Online Store",
+
+            orders: orders
+
+        })
+
+    }).catch(err => res.redirect("/errors"))
+
+}
+
+module.exports = {
+    getAddProductPage,
+    getManageOrdersPage,
+    post_order_status_edit,
+    getPendingOrders,
+    getSentOrders,
+    getCompletedOrders
+}
