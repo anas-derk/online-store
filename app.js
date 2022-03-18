@@ -77,7 +77,7 @@ app.use( (req, res) => {
 
 const port = process.env.PORT || 3000
 
-app.listen(port, "localhost", (err) => {
+app.listen(port, (err) => {
 
     console.log("The server is running on: http://localhost:" + port)
 
